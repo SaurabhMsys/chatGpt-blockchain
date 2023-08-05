@@ -1,13 +1,13 @@
 import "./App.css";
 import { Configuration, OpenAIApi } from "openai";
-import OptionSelection from "./components/OptionSelection";
-import Translation from "./components/Translation";
-import { arrayItems } from "./AIOptions";
+import OptionSelection from "./components/optionSelection";
+import Translation from "./components/compile";
+import { arrayItem } from "./aiOptions";
 import { useState } from "react";
 
 function App() {
   const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_Open_AI_Key,
+    apiKey: "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",
   });
   const openai = new OpenAIApi(configuration);
   const [option, setOption] = useState({});
@@ -18,7 +18,7 @@ function App() {
     setOption(option);
   };
 
-  const makeSearch  = async () => {
+  const makeSearch = async () => {
     let object = { ...option, prompt: input };
 
     const response = await openai.createCompletion(object);
@@ -29,9 +29,9 @@ function App() {
   return (
     <div className="App">
       {Object.values(option).length === 0 ? (
-        <OptionSelection arrayItems={arrayItems} selectOption={selectOption} />
+        <OptionSelection arrayItem={arrayItem} selectOption={selectOption} />
       ) : (
-        <Translation makeSearch ={makeSearch } setInput={setInput} result={result} />
+        <Translation makeSearch={makeSearch} setInput={setInput} result={result} />
       )}
     </div>
   );

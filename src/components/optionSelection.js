@@ -1,12 +1,13 @@
 import React from "react";
 
-export default function OptionSelection({ arrayItems, selectOption }) {
+export default function OptionSelection({ arrayItem, selectOption }) {
+    
   return (
     <>
-      <h1 className="heading">ChatGPT Clone</h1>
+      <h1 className="heading">Blockchain with ChatGPT</h1>
 
       <div className="grid-main">
-        {arrayItems.map((item) => {
+        {arrayItem.map((item) => {
           return (
             <div
               className="grid-child"
@@ -14,7 +15,9 @@ export default function OptionSelection({ arrayItems, selectOption }) {
             >
               <h3>{item.name}</h3>
               <p>{item.description}</p>
+              
             </div>
+
           );
         })}
       </div>
